@@ -2,10 +2,10 @@ import re
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import *
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hello world")
-
-def test(request):
-    return HttpResponse("<h1>I'm on test page</h1>")
+    quizzes = Quiz.objects.all()
+    
+    return render(request, 'greetings/index.html', {'title':'Greetings'})
